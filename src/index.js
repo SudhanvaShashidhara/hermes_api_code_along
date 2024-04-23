@@ -8,11 +8,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(function(req, res, next){
-    console.log("In another middleware");
-    next();
-});
-
 app.get("/api/typeform-data", async function(req, res){
     // form_id = m7WLVL5V
     // response_id = e1xx99rx1ubi7ui8ylhre1xx9awgrp0g
@@ -54,4 +49,3 @@ app.listen(PORT, function(){
     console.log(`App Listening on port : ${PORT}`);
 });
 
-module.exports = app;
