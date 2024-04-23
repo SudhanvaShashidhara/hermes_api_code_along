@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typeform Form</title>
+</head>
+<body>
+    <h1>Typeform form</h1>
+
+    <main>
+        <div data-tf-live="01HT9JTWN98JDYTWBPD8F6E4V4"></div><script src="//embed.typeform.com/next/embed.js"></script>
+    </main>
+
+    <script>
+        window.addEventListener('message', function(e){
+            if(e.origin !== "https://form.typeform.com") return;
+            if(e.data.type && e.data.type === "form-submit"){
+                fetch(`/api/typeform-data?form_id=${e.data.formId}&response_id=${e.data.response_id}`)
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(json){
+                    console.log(json);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
